@@ -1,7 +1,7 @@
 ---
 name: Carelink Issue Template
 about: 케어링크 이슈 템플릿
-title: ''
+title: "[Feat] "
 labels: ''
 assignees: ruddmslee
 
