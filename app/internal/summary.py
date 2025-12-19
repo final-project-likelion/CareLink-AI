@@ -3,16 +3,19 @@ from pydantic import BaseModel
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+from fastapi import APIRouter
 
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 app = FastAPI()
 
+router = APIRouter(prefix="/preview-summary")
+
 class SummaryRequest(BaseModel):
     content: str
 
-@app.post("/preview-summary")
+@router.post("")
 def generate_preview_summary(request: SummaryRequest):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
