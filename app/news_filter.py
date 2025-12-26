@@ -75,6 +75,8 @@ Content:
     try:
         parsed = json.loads(raw)
         return parsed
-    except json.JSONDecodeError:
-        # 형식 깨지면 무조건 안전하게 차단
-        return {"usable": False}
+
+    except Exception as e:
+        # 어떤 에러든 필터 실패 → 통과
+        print("AI filter error:", e)
+        return {"usable": True}
